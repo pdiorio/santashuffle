@@ -1,0 +1,32 @@
+participant 1:
+    name: John Johnson
+    email: john@example.com
+    banned: ["Lucy Johnson"]
+participant 2:
+    name: Lucy Johnson
+    email: lucy@example.com
+    banned: ["John Johnson"]
+participant 3:
+    name: Roger Luciano
+    email: roger@example.com
+    banned: ["Susan Luciano"]
+participant 4:
+    name: Susan Luciano
+    email: susan@example.com
+    banned: ["Roger Luciano", "Garth Vader", "Skylar White"]
+participant 5:
+    name: Garth Vader
+    email: garth@example.com
+    banned: ["Anne Vader"]
+participant 6:
+    name: Anne Vader
+    email: anne@example.com
+    banned: ["Garth Vader"]
+participant 7:
+    name: Malcom White
+    email: malcom@example.com
+    banned: ["Skylar White"]
+participant 8:
+    name: Skylar White
+    email: skylar@example.com
+    banned: ["Malcom White"]

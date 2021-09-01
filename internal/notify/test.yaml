@@ -1,0 +1,10 @@
+client_id: 123456789
+client_secret: abcdefg
+access_token: ABC-123_EFG
+refresh_token: 9//ABC/876
+
+email_subject: "Secret Santa Assignment!"
+email_template: "
+{{.Gifter.Name}},\n\n
+You are {{.Giftee.Name}}'s Secret Santa!\n
+"

@@ -1,0 +1,10 @@
+client_id: xxxxx
+client_secret: xxxxx
+access_token: xxxxx
+refresh_token: xxxxx
+
+email_subject: "Secret Santa Assignment!"
+email_template: "
+{{.Gifter.Name}},\n\n
+You are {{.Giftee.Name}}'s Secret Santa!\n
+"
