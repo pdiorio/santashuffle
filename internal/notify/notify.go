@@ -8,7 +8,7 @@ import (
 	"text/template"
 
 	"github.com/pdiorio/santashuffle/internal/selection"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 func readSettingsFromFile(filename string) (map[string]string, error) {
