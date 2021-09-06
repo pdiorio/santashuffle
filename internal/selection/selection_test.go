@@ -52,10 +52,10 @@ participant 1:
 
 func ExampleDisplayParticipants() {
 	test := []*Participant{
-		&Participant{Name: "Name1", Email: "Email1", Banned: []string{"BannedName"}},
-		&Participant{Name: "Name2", Email: "Email2", Banned: []string{"BannedName"}},
-		&Participant{Name: "Name3", Email: "Email3", Banned: []string{"BannedName"}},
-		&Participant{Name: "Name4", Email: "Email4", Banned: []string{"BannedName"}},
+		{Name: "Name1", Email: "Email1", Banned: []string{"BannedName"}},
+		{Name: "Name2", Email: "Email2", Banned: []string{"BannedName"}},
+		{Name: "Name3", Email: "Email3", Banned: []string{"BannedName"}},
+		{Name: "Name4", Email: "Email4", Banned: []string{"BannedName"}},
 	}
 
 	DisplayParticipants(test)
@@ -68,9 +68,9 @@ func ExampleDisplayParticipants() {
 
 func ExampleDisplayMatches() {
 	test := []*Match{
-		&Match{Gifter: &Participant{Name: "Name1"}, Giftee: &Participant{Name: "Name3"}},
-		&Match{Gifter: &Participant{Name: "Name2"}, Giftee: &Participant{Name: "Name1"}},
-		&Match{Gifter: &Participant{Name: "Name3"}, Giftee: &Participant{Name: "Name2"}},
+		{Gifter: &Participant{Name: "Name1"}, Giftee: &Participant{Name: "Name3"}},
+		{Gifter: &Participant{Name: "Name2"}, Giftee: &Participant{Name: "Name1"}},
+		{Gifter: &Participant{Name: "Name3"}, Giftee: &Participant{Name: "Name2"}},
 	}
 
 	DisplayMatches(test)
@@ -84,9 +84,9 @@ func TestShuffleParticipants(t *testing.T) {
 	rand.Seed(20)
 
 	test := []*Participant{
-		&Participant{Name: "Name1", Email: "Email1", Banned: []string{"BannedName"}},
-		&Participant{Name: "Name2", Email: "Email2", Banned: []string{"BannedName"}},
-		&Participant{Name: "Name3", Email: "Email3", Banned: []string{"BannedName"}},
+		{Name: "Name1", Email: "Email1", Banned: []string{"BannedName"}},
+		{Name: "Name2", Email: "Email2", Banned: []string{"BannedName"}},
+		{Name: "Name3", Email: "Email3", Banned: []string{"BannedName"}},
 	}
 
 	shuffleParticipants(test)
@@ -100,9 +100,9 @@ func TestMakeSelections(t *testing.T) {
 	rand.Seed(20)
 
 	test := []*Participant{
-		&Participant{Name: "Name1", Email: "Email1", Banned: []string{"BannedName"}},
-		&Participant{Name: "Name2", Email: "Email2", Banned: []string{"BannedName"}},
-		&Participant{Name: "Name3", Email: "Email3", Banned: []string{"BannedName"}},
+		{Name: "Name1", Email: "Email1", Banned: []string{"BannedName"}},
+		{Name: "Name2", Email: "Email2", Banned: []string{"BannedName"}},
+		{Name: "Name3", Email: "Email3", Banned: []string{"BannedName"}},
 	}
 	matches := makeSelections(test)
 

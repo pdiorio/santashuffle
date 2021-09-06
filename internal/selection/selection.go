@@ -57,7 +57,6 @@ func createParticipantsFromYaml(yfile []byte) ([]*Participant, error) {
 	}
 
 	return participants, nil
-
 }
 
 func DisplayParticipants(participants []*Participant) {
