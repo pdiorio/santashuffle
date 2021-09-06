@@ -184,13 +184,17 @@ func TestSwapMatches(t *testing.T) {
 func TestCorrectMatches(t *testing.T) {
 	rand.Seed(20)
 	test := []*Match{
-		&Match{Gifter: &Participant{Name: "Name1"}, Giftee: &Participant{Name: "Name1"}},
-		&Match{Gifter: &Participant{Name: "Name2"}, Giftee: &Participant{Name: "Name3"}},
-		&Match{Gifter: &Participant{Name: "Name3"}, Giftee: &Participant{Name: "Name4"}},
-		&Match{Gifter: &Participant{Name: "Name4", Banned: []string{"Name2"}}, Giftee: &Participant{Name: "Name2"}},
+		{Gifter: &Participant{Name: "Name1"}, Giftee: &Participant{Name: "Name1"}},
+		{Gifter: &Participant{Name: "Name2"}, Giftee: &Participant{Name: "Name3"}},
+		{Gifter: &Participant{Name: "Name3"}, Giftee: &Participant{Name: "Name4"}},
+		{Gifter: &Participant{Name: "Name4", Banned: []string{"Name2"}}, Giftee: &Participant{Name: "Name2"}},
 	}
 
-	numCorrections := correctMatches(test)
+	numCorrections, err := correctMatches(test)
+
+	if err != nil {
+		t.Errorf("correctMatches() error: %s", err)
+	}
 
 	if !(numCorrections >= 2) {
 		t.Errorf("correctMatches() not enough corrections got:%d want>=%d", numCorrections, 2)
@@ -198,7 +202,7 @@ func TestCorrectMatches(t *testing.T) {
 }
 
 func ExampleRunSelection() {
-	_ = RunSelection("./test.yaml", 20, true)
+	_, _ = RunSelection("./test.yaml", 20, true)
 
 	// Output:
 	//Skylar White -> Garth Vader

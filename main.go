@@ -2,6 +2,8 @@ package main
 
 import (
 	"flag"
+	"fmt"
+	"os"
 
 	"github.com/pdiorio/santashuffle/internal/notify"
 	"github.com/pdiorio/santashuffle/internal/selection"
@@ -24,6 +26,10 @@ func init() {
 func main() {
 	flag.Parse()
 
-	matches := selection.RunSelection(*participantPtr, *seedVal, *dryrun)
+	matches, err := selection.RunSelection(*participantPtr, *seedVal, *dryrun)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		os.Exit(1)
+	}
 	notify.NotifyPariticpants(matches, *gmailPtr, *dryrun)
 }

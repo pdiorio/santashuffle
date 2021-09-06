@@ -125,7 +125,9 @@ func swapMatches(match1 *Match, match2 *Match) {
 	match1.Giftee, match2.Giftee = match2.Giftee, match1.Giftee
 }
 
-func correctMatches(matches []*Match) int {
+func correctMatches(matches []*Match) (int, error) {
+	const maxCorrections int = 10000
+
 	reviewNeeded := true
 	totalCorrections := 0
 
@@ -140,25 +142,35 @@ func correctMatches(matches []*Match) int {
 				reviewNeeded = true
 			}
 		}
+		if totalCorrections > maxCorrections {
+			return totalCorrections, fmt.Errorf("correctMatches: the number of match corrections (%d) exceeds the maximum (%d), "+
+				"suggesting a match solution may not be possible given the constraints", totalCorrections, maxCorrections)
+		}
 	}
-	return totalCorrections
+	return totalCorrections, nil
 }
 
-func RunSelection(participantFile string, seed int64, dryrun bool) []*Match {
+func RunSelection(participantFile string, seed int64, dryrun bool) ([]*Match, error) {
 	if seed == 0 {
 		seed = time.Now().UnixNano()
 	}
 	rand.Seed(seed)
 
-	participants, _ := createParticipantsFromFile(participantFile)
+	participants, err1 := createParticipantsFromFile(participantFile)
+	if err1 != nil {
+		return nil, err1
+	}
 
 	matches := makeSelections(participants)
-	totalCorrections := correctMatches(matches)
+	totalCorrections, err2 := correctMatches(matches)
+	if err2 != nil {
+		return matches, err2
+	}
 
 	if dryrun {
 		DisplayMatches(matches)
 		fmt.Printf("total corrections made: %d\n", totalCorrections)
 	}
 
-	return matches
+	return matches, nil
 }
