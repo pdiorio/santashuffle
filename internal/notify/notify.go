@@ -46,10 +46,11 @@ func NotifyPariticpants(matches []*(selection.Match), settingsFilename string, d
 		body := buf.String()
 
 		gmail := GmailClient{
-			ClientID:     settings["client_id"],
-			ClientSecret: settings["client_secret"],
-			RefreshToken: settings["refresh_token"],
-			AccessToken:  settings["access_token"],
+			ClientID:          settings["client_id"],
+			ClientSecret:      settings["client_secret"],
+			RefreshToken:      settings["refresh_token"],
+			AccessToken:       settings["access_token"],
+			AuthorizationCode: settings["authorization_code"],
 		}
 
 		if dryrun {

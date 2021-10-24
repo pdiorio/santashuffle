@@ -40,7 +40,7 @@ func (g *GmailClient) Connect() error {
 
 	var tokenPtr *oauth2.Token
 
-	if (g.AccessToken != "") && (g.RefreshToken != "") {
+	if (g.RefreshToken != "") && (g.AccessToken != "") {
 		tokenPtr = &oauth2.Token{
 			AccessToken:  g.AccessToken,
 			RefreshToken: g.RefreshToken,
