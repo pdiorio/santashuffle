@@ -1,7 +1,7 @@
-client_id: xxxxx
-client_secret: xxxxx
-access_token: xxxxx
-refresh_token: xxxxx
+email_account: xxxxx
+app_password: xxxxx
+smtp_server: xxxxx
+smtp_port: xxxxx
 
 email_subject: "Secret Santa Assignment!"
 email_template: "

@@ -45,12 +45,11 @@ func NotifyPariticpants(matches []*(selection.Match), settingsFilename string, d
 
 		body := buf.String()
 
-		gmail := GmailClient{
-			ClientID:          settings["client_id"],
-			ClientSecret:      settings["client_secret"],
-			RefreshToken:      settings["refresh_token"],
-			AccessToken:       settings["access_token"],
-			AuthorizationCode: settings["authorization_code"],
+		email := EmailClient{
+			EmailAccount:		settings["email_account"],
+			AppPassword:		settings["app_password"],
+			SmtpServer:      	settings["smtp_server"],
+			SmtpPort:       	settings["smtp_port"],
 		}
 
 		if dryrun {
@@ -58,7 +57,7 @@ func NotifyPariticpants(matches []*(selection.Match), settingsFilename string, d
 				match.Gifter.Email, settings["email_subject"], body)
 		} else {
 			fmt.Printf("Notiyfing %s of their assignment.\n", match.Gifter.Name)
-			err2 := gmail.SendEmail(match.Gifter.Email, settings["email_subject"], body)
+			err2 := email.SendEmail(match.Gifter.Email, settings["email_subject"], body)
 			if err2 != nil {
 				log.Fatal(err2)
 			}

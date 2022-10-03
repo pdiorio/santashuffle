@@ -1,7 +1,7 @@
-client_id: 123456789
-client_secret: abcdefg
-access_token: ABC-123_EFG
-refresh_token: 9//ABC/876
+email_account: test@email.com
+app_password: abcdefg
+smtp_server: smtp.email.com
+smtp_port: 587
 
 email_subject: "Secret Santa Assignment!"
 email_template: "
